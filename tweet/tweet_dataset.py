@@ -24,6 +24,7 @@ from transformers import get_linear_schedule_with_warmup
 class TweetDataset(torch.utils.data.Dataset):
     def __init__(self, model_path, csv_path, train=False, max_len=96):
         df = pd.read_csv(csv_path)
+        print(f"model_path={model_path}")
         self.df = df.dropna().reset_index(drop=True)
         self.max_len = max_len
         self.labeled = 'selected_text' in self.df
